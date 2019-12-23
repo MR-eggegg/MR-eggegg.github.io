@@ -5,12 +5,27 @@
     <url>/2019/12/24/%E6%88%91%E7%9A%84%E6%96%B0%E5%8D%9A%E5%AE%A22/</url>
     <content><![CDATA[<p><img src="C:%5CUsers%5Coushi%5CDesktop%5CbkImage%5Cture1.jpg" alt="true1"></p>
 ]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
+        <tag>表格</tag>
+        <tag>表单验证</tag>
+      </tags>
   </entry>
   <entry>
     <title>我的新博客</title>
     <url>/2019/12/24/%E6%88%91%E7%9A%84%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>奥利给<br><img src="/img/avatar.jpg" alt="haha"></p>
 ]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>jQuery</tag>
+        <tag>表格</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
