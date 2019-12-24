@@ -1,86 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[post-boko1]]></title>
-      <url>/2019/12/24/post-boko1/</url>
-      <content type="html"><![CDATA[<p>— title: post_boko1 date: 2019-12-24 11:06:00 tags: — Kali Linux 是基于Debian的Linux发行版，设计用于数字鉴识和渗透测试。 由 Offensive Security Ltd 维护和资助。 Kali Linux既有32位又有64位的映像。可用于x86指令集的中央处理器。 同时还有基于ARM架构的映像，可用于树莓派和三星的ARM Chromebook.[ <img src="true1.jpg" alt=""></p>
+<search>
+  <entry>
+    <title>post-boko1</title>
+    <url>/2019/12/24/post-boko1/</url>
+    <content><![CDATA[<p>— title: post_boko1 date: 2019-12-24 11:06:00 tags: — </p>
 ]]></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2019/12/24/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></div>
+  </entry>
+  <entry>
+    <title>CTF攻防世界-WEB-cookie基础题</title>
+    <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
+    常规网上搜到的都是用burp suits做的，其实没必要这么麻烦，查看问题的讨论发现可以直接通过火狐浏览器 F12查看存储，获得cookie，然后查看网络获得flag <br>
+    Chrome浏览器可以通过控制台输入alert(document.cookie)查看cookie cookie
+<div class="note info"><p>0x02 图流程</p></div>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<a id="more"></a>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><img src="2.png" alt=""></p>
+<p><img src="1.png" alt=""></p>
 ]]></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[我的新博客2]]></title>
-      <url>/2019/12/24/%E6%88%91%E7%9A%84%E6%96%B0%E5%8D%9A%E5%AE%A22/</url>
-      <content type="html"><![CDATA[<p><img src="C:%5CUsers%5Coushi%5CDesktop%5CbkImage%5Cture1.jpg" alt="true1"></p>
+      <categories>
+        <category>CTF-WEB基础</category>
+      </categories>
+      <tags>
+        <tag>抓包基础题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>低估的Web威胁-备份文件</title>
+    <url>/2019/12/24/%E4%BD%8E%E4%BC%B0%E7%9A%84Web%E5%A8%81%E8%83%81/</url>
+    <content><![CDATA[<div class="note info"><p>0x01代码编辑器产生的备份文件</p></div>
+    文本编辑器和代码编辑器通常对正在编辑的文件会事先产生一个备份文件，这样做的目的是让出问题后可以恢复文件。
+    例如：对一个名为index.php的文件进行编辑，自动创建的备份文件将会被命名成“index.php.save”。其他的代码编辑器也是一样的，都有一套自己的备份规则。
+<div class="note danger"><p>0x02没有删除版本控制系统产生的备份文件</p></div>
+    几乎所有的控制系统VCS都会在工程目录下建一个meta目录，这个文件记录了整个项目工程每次修改的记录。
+而开发者修改项目仓库的时候就直接下载/克隆代码仓库，改为后直接上传到web服务器上。但是很多时候，VCS产生的目录并没有删除掉，这样的话，如果被攻击者找到，将会使整个工程泄露。
+
+<div class="note default">
+            <p>default </p>
+          </div>
+
+
+
+
+
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># gif 二进制转字符串</span></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a = <span class="string">'01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101'</span></span><br><span class="line">b = re.findall(r<span class="string">'.&#123;8&#125;'</span>,a)</span><br><span class="line"></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    flag += chr(int(i,2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure></div>
 ]]></content>
-      
-        <categories>
-            
-            <category> 后端 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> jQuery </tag>
-            
-            <tag> 表格 </tag>
-            
-            <tag> 表单验证 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[我的新博客]]></title>
-      <url>/2019/12/24/%E6%88%91%E7%9A%84%E6%96%B0%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gif 二进制转字符串</span></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a = <span class="string">'01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101'</span></span><br><span class="line">b = re.findall(r<span class="string">'.&#123;8&#125;'</span>,a)</span><br><span class="line"></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    flag += chr(int(i,2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure></div>
-]]></content>
-      
-        <categories>
-            
-            <category> web前端 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> jQuery </tag>
-            
-            <tag> 表格 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+      <categories>
+        <category>web安全</category>
+      </categories>
+      <tags>
+        <tag>备份文件</tag>
+        <tag>CTF-WEB基础知识</tag>
+      </tags>
+  </entry>
 </search>
