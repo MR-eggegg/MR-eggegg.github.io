@@ -7,6 +7,27 @@
 ]]></content>
   </entry>
   <entry>
+    <title>CTF攻防世界-WEB-cis05</title>
+    <url>/2019/12/24/ctf-ics-05/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 CTF攻防世界-WEB-cis05</p></div>
+
+
+
+
+
+<p><a href="https://www.cnblogs.com/likai/archive/2010/01/29/1659336.html" target="_blank">php内置封装协议 filter</a></p>
+]]></content>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+      <tags>
+        <tag>php内置filter协议</tag>
+        <tag>伪造IP</tag>
+        <tag>preg_replace()函数的/e漏洞</tag>
+        <tag>正确的php system()函数的书写</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-cookie基础题</title>
     <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
