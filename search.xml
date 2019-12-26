@@ -99,7 +99,7 @@
 <script>
   var gitment = new Gitment({
     id: '页面 ID', // 可选。默认为 location.href
-    owner: '16025814', // 可以是你的GitHub用户名，也可以是github id
+    owner: '28040130', // 可以是你的GitHub用户名，也可以是github id
     repo: 'MR-eggegg.github.io',
     oauth: {
       client_id: 'dcf239aa6b46fcf244a3',
