@@ -7,6 +7,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>CTF攻防世界-WEB-cookie基础题</title>
+    <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
+    常规网上搜到的都是用burp suits做的，其实没必要这么麻烦，查看问题的讨论发现可以直接通过火狐浏览器 F12查看存储，获得cookie，然后查看网络获得flag <br>
+    Chrome浏览器可以通过控制台输入alert(document.cookie)查看cookie cookie
+<div class="note info"><p>0x02 图流程</p></div>
+
+<p><img src="2.png" alt=""></p>
+<p><img src="1.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>CTF-WEB基础</category>
+      </categories>
+      <tags>
+        <tag>抓包基础题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-cis05</title>
     <url>/2019/12/24/ctf-ics-05/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
@@ -56,7 +74,26 @@
 <div class="note info"><p>0x04 参考</p></div>
 1.<a href="https://blog.csdn.net/zhwho/article/details/100694073" target="_blank">攻防世界web进阶ics-05 wp</a><br>
 2.<a href="https://blog.csdn.net/ww122081351/article/details/17579851" target="_blank">preg_replace危险的/e修饰符</a><br>
-3.<a href="https://blog.csdn.net/About23/article/details/95349625" target="_blank">攻防世界ics-5wp</a><br>]]></content>
+3.<a href="https://blog.csdn.net/About23/article/details/95349625" target="_blank">攻防世界ics-5wp</a><br>
+
+
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js">
+</script>
+<script>
+  var gitment = new Gitment({
+    id: '页面 ID', // 可选。默认为 location.href
+    owner: '16025814', // 可以是你的GitHub用户名，也可以是github id
+    repo: 'MR-eggegg.github.io',
+    oauth: {
+      client_id: 'dcf239aa6b46fcf244a3',
+      client_secret: '2b92cc0f958358e2c10b5fb8746381c15f5ee29d',
+    },
+  })
+  gitment.render('container')
+</script>]]></content>
       <categories>
         <category>CTF-WEB</category>
       </categories>
@@ -65,24 +102,6 @@
         <tag>伪造IP</tag>
         <tag>preg_replace()函数的/e漏洞</tag>
         <tag>正确的php system()函数的书写</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CTF攻防世界-WEB-cookie基础题</title>
-    <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
-    常规网上搜到的都是用burp suits做的，其实没必要这么麻烦，查看问题的讨论发现可以直接通过火狐浏览器 F12查看存储，获得cookie，然后查看网络获得flag <br>
-    Chrome浏览器可以通过控制台输入alert(document.cookie)查看cookie cookie
-<div class="note info"><p>0x02 图流程</p></div>
-
-<p><img src="2.png" alt=""></p>
-<p><img src="1.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>CTF-WEB基础</category>
-      </categories>
-      <tags>
-        <tag>抓包基础题</tag>
       </tags>
   </entry>
   <entry>
