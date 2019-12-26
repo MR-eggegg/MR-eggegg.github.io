@@ -121,9 +121,9 @@
     var gitalk = new Gitalk({
 
 <pre><code>// gitalk的主要参数
-    clientID: `dcf239aa6b46fcf244a3`,
-    clientSecret: `2b92cc0f958358e2c10b5fb8746381c15f5ee29d`,
-    repo: `MR-eggegg.github.io`,
+    clientID: &apos;dcf239aa6b46fcf244a3&apos;,
+    clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
+    repo: &apos;MR-eggegg.github.io&apos;,
     owner: &apos;MR-eggegg&apos;,
     admin: [&apos;MR-eggegg&apos;],
     id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
