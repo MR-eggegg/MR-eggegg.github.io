@@ -94,23 +94,23 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
 
 
 
-<div id="container"></div>
+<!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://jjeejj.github.io/js/gitment.js"></script>
-</script>
-<script>
-  var gitment = new Gitment({
-    id: '页面 ID', // 可选。默认为 location.href
-    owner: '28040130', // 可以是你的GitHub用户名，也可以是github id
-    repo: 'MR-eggegg.github.io',
-    oauth: {
-      client_id: 'dcf239aa6b46fcf244a3',
-      client_secret: '2b92cc0f958358e2c10b5fb8746381c15f5ee29d',
-    },
-  })
-  gitment.render('container')
-</script>]]></content>
+<pre><code>// gitalk的主要参数
+    clientID: &apos;dcf239aa6b46fcf244a3&apos;,
+    clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
+    repo: &apos;MR-eggegg.github.io&apos;,
+    owner: &apos;MR-eggegg&apos;,
+    admin: [&apos;MR-eggegg&apos;],
+    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
+
+});
+gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
+]]></content>
       <categories>
         <category>CTF-WEB</category>
       </categories>
