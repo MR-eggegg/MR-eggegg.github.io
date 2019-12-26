@@ -12,49 +12,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[CTF攻防世界-WEB-cookie基础题]]></title>
-      <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
-      <content type="html"><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
-    常规网上搜到的都是用burp suits做的，其实没必要这么麻烦，查看问题的讨论发现可以直接通过火狐浏览器 F12查看存储，获得cookie，然后查看网络获得flag <br>
-    Chrome浏览器可以通过控制台输入alert(document.cookie)查看cookie cookie
-<div class="note info"><p>0x02 图流程</p></div>
-
-<p><img src="2.png" alt=""></p>
-<p><img src="1.png" alt=""></p>
-<!-- Link Gitalk 的支持文件  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
-<div id="gitalk-container"></div>     <script type="text/javascript">
-    var gitalk = new Gitalk({
-
-<pre><code>// gitalk的主要参数
-    clientID: `dcf239aa6b46fcf244a3`,
-    clientSecret: `2b92cc0f958358e2c10b5fb8746381c15f5ee29d`,
-    repo: `MR-eggegg.github.io`,
-    owner: &apos;MR-eggegg&apos;,
-    admin: [&apos;MR-eggegg&apos;],
-    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
-
-});
-gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
-]]></content>
-      
-        <categories>
-            
-            <category> CTF-WEB基础 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 抓包基础题 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[CTF攻防世界-WEB-cis05]]></title>
       <url>/2019/12/24/ctf-ics-05/</url>
       <content type="html"><![CDATA[<div class="note info"><p>0x01 前要</p></div>
@@ -142,6 +99,49 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
             <tag> preg_replace()函数的/e漏洞 </tag>
             
             <tag> 正确的php system()函数的书写 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CTF攻防世界-WEB-cookie基础题]]></title>
+      <url>/2019/12/24/pb%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<div class="note info"><p>0x01 攻防世界web新手区cookie题</p></div>
+    常规网上搜到的都是用burp suits做的，其实没必要这么麻烦，查看问题的讨论发现可以直接通过火狐浏览器 F12查看存储，获得cookie，然后查看网络获得flag <br>
+    Chrome浏览器可以通过控制台输入alert(document.cookie)查看cookie cookie
+<div class="note info"><p>0x02 图流程</p></div>
+
+<p><img src="2.png" alt=""></p>
+<p><img src="1.png" alt=""></p>
+<!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+
+<pre><code>// gitalk的主要参数
+    clientID: `dcf239aa6b46fcf244a3`,
+    clientSecret: `2b92cc0f958358e2c10b5fb8746381c15f5ee29d`,
+    repo: `MR-eggegg.github.io`,
+    owner: &apos;MR-eggegg&apos;,
+    admin: [&apos;MR-eggegg&apos;],
+    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
+
+});
+gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
+]]></content>
+      
+        <categories>
+            
+            <category> CTF-WEB基础 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 抓包基础题 </tag>
             
         </tags>
         
