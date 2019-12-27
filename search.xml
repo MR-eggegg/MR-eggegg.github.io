@@ -78,12 +78,6 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
       </tags>
   </entry>
   <entry>
-    <title>post-boko1</title>
-    <url>/2019/12/24/post-boko1/</url>
-    <content><![CDATA[<p>— title: post_boko1 date: 2019-12-24 11:06:00 tags: — </p>
-]]></content>
-  </entry>
-  <entry>
     <title>CTF攻防世界-WEB-cis05</title>
     <url>/2019/12/24/ctf-ics-05/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
@@ -200,31 +194,21 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
   </entry>
   <entry>
     <title>低估的Web威胁-备份文件</title>
-    <url>/2019/12/24/%E4%BD%8E%E4%BC%B0%E7%9A%84Web%E5%A8%81%E8%83%81/</url>
-    <content><![CDATA[<div class="note info"><p>0x01代码编辑器产生的备份文件</p></div>
-    文本编辑器和代码编辑器通常对正在编辑的文件会事先产生一个备份文件，这样做的目的是让出问题后可以恢复文件。
-    例如：对一个名为index.php的文件进行编辑，自动创建的备份文件将会被命名成“index.php.save”。其他的代码编辑器也是一样的，都有一套自己的备份规则。
-<div class="note danger"><p>0x02没有删除版本控制系统产生的备份文件</p></div>
-    几乎所有的控制系统VCS都会在工程目录下建一个meta目录，这个文件记录了整个项目工程每次修改的记录。
-而开发者修改项目仓库的时候就直接下载/克隆代码仓库，改为后直接上传到web服务器上。但是很多时候，VCS产生的目录并没有删除掉，这样的话，如果被攻击者找到，将会使整个工程泄露。
-
-<div class="note default">
-            <p>default </p>
-          </div>
+    <url>/2019/12/24/CTF-python3%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<div class="note info"><p>0x01二进制转字符串</p></div>
+<details>
+<summary>二进制转字符串</summary>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"># gif 二进制转字符串</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a &#x3D; &#39;01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101&#39;</span><br><span class="line">b &#x3D; re.findall(r&#39;.&#123;8&#125;&#39;,a)</span><br><span class="line"></span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">for i in b:</span><br><span class="line">    flag +&#x3D; chr(int(i,2))</span><br><span class="line"></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure></div>
+</details>
 
 
-
-
-
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># gif 二进制转字符串</span></span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a = <span class="string">'01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101'</span></span><br><span class="line">b = re.findall(r<span class="string">'.&#123;8&#125;'</span>,a)</span><br><span class="line"></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b:</span><br><span class="line">    flag += chr(int(i,2))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"note danger"</span>&gt;&lt;p&gt;0x02没有删除版本控制系统产生的备份文件&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">	几乎所有的控制系统VCS都会在工程目录下建一个meta目录，这个文件记录了整个项目工程每次修改的记录。</span><br><span class="line">而开发者修改项目仓库的时候就直接下载/克隆代码仓库，改为后直接上传到web服务器上。但是很多时候，VCS产生的目录并没有删除掉，这样的话，如果被攻击者找到，将会使整个工程泄露。</span><br><span class="line"></span><br><span class="line">&#123;% note default %&#125; default &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div>
 ]]></content>
       <categories>
-        <category>web安全</category>
+        <category>CTF-WEB</category>
       </categories>
       <tags>
-        <tag>备份文件</tag>
-        <tag>CTF-WEB基础知识</tag>
+        <tag>python3 工具合集</tag>
       </tags>
   </entry>
 </search>
