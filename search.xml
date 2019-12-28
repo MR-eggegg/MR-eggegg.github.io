@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CTF��������-WEB-bug</title>
+    <url>/2019/12/28/ctf-web-bug/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 ǰҪ</p></div>
+1.�ļ��ϴ��ƹ�<br>
+2.apache���ļ�����©��
+
+<a id="more"></a>
+
+<div class="note info"><p>0x02 ����������˼·</p></div>
+1.������½���棬����sqlע�룬�޹���
+
+<br>
+
+<p>2.������ע���˺ţ���½����½�ɹ�������ʾֻ��admin�û�������ʹ����Ȩ</p>
+<p><img src="1.PNG" alt=""></p>
+<p>3.��֪�û�Ϊadmin�����ǵ��ǲ���Ҫ���ֵ䱬�����롣���ǿ���wp�����ͨ���޸�����ʱ��ͨ���޸Ĵ��Σ��޸�admin�����롣</p>
+<p><img src="2.PNG" alt=""></p>
+<p>4.��ʾIP not allowed������Ȼ��½ʧ�ܣ�ץ���鿴����IP��</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">������ַ:http://111.198.29.45:34163/index.php?module=admin</span><br><span class="line">���󷽷�:GET</span><br><span class="line">Զ�̵�ַ:127.0.0.1:8080</span><br></pre></td></tr></table></figure></div>
+<p>4_1.�޸�IP Ϊ127.0.0.1���ɹ���½�����ҵ�����</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- index.php?module=filemanage&amp;<span class="keyword">do</span>=???--&gt;</span><br></pre></td></tr></table></figure></div>
+<p>5.������������֪���ļ�����ģ�ͣ��²�doΪ��ɾ��ģ�����write��download,read,upload�����ȷ��Ϊupload��</p>
+<p><img src="3.PNG" alt=""></p>
+<p>6.�����ϴ��ļ�����ʾֻ���ϴ�ͼƬ�ļ�������²���һ�仰ľ�����������ָ��򵥴ֱ�������<br>�½�txt�ļ� д��������룬Ȼ��ĺ�׺��Ϊimage�ļ���Ȼ���ϴ��ļ�</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;script language=<span class="string">'php'</span>&gt;���д��Ӱ�����&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+<p>6_1.����ץ�����Ĳ���������׺����Ϊphp5�����ɻ��flag<br><img src="4.PNG" alt=""></p>
+<div class="note info"><p>0x03 �ο�</p></div>
+1.<a href="https://blog.csdn.net/harry_c/article/details/100631696" target="_blank">l��������WEB����֮bug</a><br>
+2.<a href="https://blog.csdn.net/wn314/article/details/77074477" target="_blank">����Ϊʲô���һ���޷�ʹ��php.xxxֻ�ܸĲ�php4/5</a><br>
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+<!-- Link Gitalk ��֧���ļ�  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+
+<pre><code>// gitalk����Ҫ����
+    clientID: &apos;dcf239aa6b46fcf244a3&apos;,
+    clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
+    repo: &apos;MR-eggegg.github.io&apos;,
+    owner: &apos;MR-eggegg&apos;,
+    admin: [&apos;MR-eggegg&apos;],
+    id: &apos;ҳ���Ψһ��ʶ��gitalk����������ʶ�Զ�������issue�ı�ǩ&apos;,
+
+});
+gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
+]]></content>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+      <tags>
+        <tag>�޸Ĵ���</tag>
+        <tag>�ļ��ϴ��ƹ�</tag>
+        <tag>α��ip</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-lottery</title>
     <url>/2019/12/27/ctf-lottery/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
@@ -8,12 +75,12 @@
 2.robots协议<br>
 3.PHP 弱类型比较
 
- <a id="more"></a>
+<a id="more"></a>
 
 
- <div class="note info"><p>0x02 解题流程与思路</p></div>
- 1.尝试测试网页，注册账号，购买彩票，攒足足够的钱，购买flag。<br>
- 1_1.尝试购买彩票，利用浏览器工具抓包，发现购买彩票时，数据通过api.php。
+<div class="note info"><p>0x02 解题流程与思路</p></div>
+1.尝试测试网页，注册账号，购买彩票，攒足足够的钱，购买flag。<br>
+1_1.尝试购买彩票，利用浏览器工具抓包，发现购买彩票时，数据通过api.php。
 
 <p><img src="1.PNG" alt=""></p>
 <p>2.尝试获取api.php源码，在CTF新手区时，其实我们做过类似的题目，robots协议，尝试查看robots.txt。可知网页存在.git源码泄露。</p>
