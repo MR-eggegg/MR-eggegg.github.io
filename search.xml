@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CTF��������-WEB-bug</title>
+    <title>CTF攻防世界-WEB-bug</title>
     <url>/2019/12/28/ctf-web-bug/</url>
-    <content><![CDATA[<div class="note info"><p>0x01 ǰҪ</p></div>
-1.�ļ��ϴ��ƹ�<br>
-2.apache���ļ�����©��
+    <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
+1.文件上传绕过<br>
+2.apache的文件解析漏洞
 
 <a id="more"></a>
 
-<div class="note info"><p>0x02 ����������˼·</p></div>
-1.������½���棬����sqlע�룬�޹���
+<div class="note info"><p>0x02 解题流程与思路</p></div>
+1.看到登陆界面，尝试sql注入，无果。
 
 <br>
 
-<p>2.������ע���˺ţ���½����½�ɹ�������ʾֻ��admin�û�������ʹ����Ȩ</p>
+<p>2.按流程注册账号，登陆，登陆成功，但显示只有admin用户才允许使用特权</p>
 <p><img src="1.PNG" alt=""></p>
-<p>3.��֪�û�Ϊadmin�����ǵ��ǲ���Ҫ���ֵ䱬�����롣���ǿ���wp�����ͨ���޸�����ʱ��ͨ���޸Ĵ��Σ��޸�admin�����롣</p>
+<p>3.已知用户为admin，考虑到是不是要用字典爆破密码。但是看到wp里，可以通过修改密码时，通过修改传参，修改admin的密码。</p>
 <p><img src="2.PNG" alt=""></p>
-<p>4.��ʾIP not allowed������Ȼ��½ʧ�ܣ�ץ���鿴����IP��</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">������ַ:http://111.198.29.45:34163/index.php?module=admin</span><br><span class="line">���󷽷�:GET</span><br><span class="line">Զ�̵�ַ:127.0.0.1:8080</span><br></pre></td></tr></table></figure></div>
-<p>4_1.�޸�IP Ϊ127.0.0.1���ɹ���½�����ҵ�����</p>
+<p>4.显示IP not allowed发现仍然登陆失败，抓包查看请求IP。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">请求网址:http://111.198.29.45:34163/index.php?module=admin</span><br><span class="line">请求方法:GET</span><br><span class="line">远程地址:127.0.0.1:8080</span><br></pre></td></tr></table></figure></div>
+<p>4_1.修改IP 为127.0.0.1，成功登陆，并找到线索</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- index.php?module=filemanage&amp;<span class="keyword">do</span>=???--&gt;</span><br></pre></td></tr></table></figure></div>
-<p>5.������������֪���ļ�����ģ�ͣ��²�doΪ��ɾ��ģ�����write��download,read,upload�����ȷ��Ϊupload��</p>
+<p>5.根据线索，已知是文件管理模型，猜测do为增删查改，尝试write，download,read,upload。最后确认为upload。</p>
 <p><img src="3.PNG" alt=""></p>
-<p>6.�����ϴ��ļ�����ʾֻ���ϴ�ͼƬ�ļ�������²���һ�仰ľ�����������ָ��򵥴ֱ�������<br>�½�txt�ļ� д��������룬Ȼ��ĺ�׺��Ϊimage�ļ���Ȼ���ϴ��ļ�</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;script language=<span class="string">'php'</span>&gt;���д��Ӱ�����&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-<p>6_1.����ץ�����Ĳ���������׺����Ϊphp5�����ɻ��flag<br><img src="4.PNG" alt=""></p>
-<div class="note info"><p>0x03 �ο�</p></div>
-1.<a href="https://blog.csdn.net/harry_c/article/details/100631696" target="_blank">l��������WEB����֮bug</a><br>
-2.<a href="https://blog.csdn.net/wn314/article/details/77074477" target="_blank">����Ϊʲô���һ���޷�ʹ��php.xxxֻ�ܸĲ�php4/5</a><br>
+<p>6.尝试上传文件，提示只能上传图片文件，最初猜测是一句话木马，后来发现更简单粗暴。。。<br>新建txt文件 写入下面代码，然后改后缀名为image文件，然后上传文件</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;script language=<span class="string">'php'</span>&gt;随便写不影响解题&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+<p>6_1.依旧抓包，改参数，将后缀名改为php5，即可获得flag<br><img src="4.PNG" alt=""></p>
+<div class="note info"><p>0x03 参考</p></div>
+1.<a href="https://blog.csdn.net/harry_c/article/details/100631696" target="_blank">l攻防世界WEB进阶之bug</a><br>
+2.<a href="https://blog.csdn.net/wn314/article/details/77074477" target="_blank">关于为什么最后一步无法使用php.xxx只能改参php4/5</a><br>
 
 
 
@@ -41,19 +41,19 @@
 <br>
 <br>
 
-<!-- Link Gitalk ��֧���ļ�  -->
+<!-- Link Gitalk 的支持文件  -->
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
 <div id="gitalk-container"></div>     <script type="text/javascript">
     var gitalk = new Gitalk({
 
-<pre><code>// gitalk����Ҫ����
+<pre><code>// gitalk的主要参数
     clientID: &apos;dcf239aa6b46fcf244a3&apos;,
     clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
     repo: &apos;MR-eggegg.github.io&apos;,
     owner: &apos;MR-eggegg&apos;,
     admin: [&apos;MR-eggegg&apos;],
-    id: &apos;ҳ���Ψһ��ʶ��gitalk����������ʶ�Զ�������issue�ı�ǩ&apos;,
+    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
 
 });
 gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
@@ -62,9 +62,9 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
         <category>CTF-WEB</category>
       </categories>
       <tags>
-        <tag>�޸Ĵ���</tag>
-        <tag>�ļ��ϴ��ƹ�</tag>
-        <tag>α��ip</tag>
+        <tag>修改传参</tag>
+        <tag>文件上传绕过</tag>
+        <tag>伪造ip</tag>
       </tags>
   </entry>
   <entry>
