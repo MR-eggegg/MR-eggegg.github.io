@@ -8,7 +8,7 @@
 2.apache的文件解析漏洞
 
 <a id="more"></a>
-
+<br>
 <div class="note info"><p>0x02 解题流程与思路</p></div>
 1.看到登陆界面，尝试sql注入，无果。
 
