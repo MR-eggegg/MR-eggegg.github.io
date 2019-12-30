@@ -6,8 +6,8 @@
       <title><![CDATA[CTF攻防世界-WEB-FlatScience]]></title>
       <url>/2019/12/30/ctf-web-FlatScience/</url>
       <content type="html"><![CDATA[<div class="note info"><p>0x01 前要</p></div>
-1.网页目录遍历 or robots协议
-2.SQL注入之sqlite数据库
+1.网页目录遍历 or robots协议<br>
+2.SQL注入之sqlite数据库<br>
 3.python 爬取PDF，python 扫描比对PDF文本找出密码之sha1，md5解密
 
 <a id="more"></a>
