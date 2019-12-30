@@ -14,7 +14,7 @@
 1.拿到网页，日常扫描。或者进robots.txt查看，CTF-web解题日常操作。根据扫描或者robots协议的信息，我们可知网页存在admin.php和login.php。
 ![](1.PNG)
 <br>
-2.尝试操作admin.php和login.php因为admin.php进行任何操作都没有回执，尝试操作login.php
+2.尝试操作admin.php和login.php因为admin.php进行任何操作都没有回执，尝试操作login.php<br>
  2_1.admin' 进行SQL注入尝试，服务器返回报错。从报错信息中我们可以得知该服务器为SQLite3数据库，也就是我们可能无法通过注入database来获取信息。
 <br>
 3.查看网页源代码，其中有一段： TODO: Remove ?debug-Parameter! 。所以我们更改url：login.php?debug,这样我们就可以看到PHP的信息
