@@ -59,17 +59,20 @@
 </script>
 
 
-  <meta name="description" content="kobo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MR-eggegg">
-<meta property="og:url" content="http://yoursite.com/archives/2019/12/index.html">
+  <meta name="description" content="0x01 ǰҪ 1.PHP���л��뷴���л�">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF��������-WEB-php2">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/ctf-web-php2/index.html">
 <meta property="og:site_name" content="MR-eggegg">
-<meta property="og:description" content="kobo">
+<meta property="og:description" content="0x01 ǰҪ 1.PHP���л��뷴���л�">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-30T15:00:41.000Z">
+<meta property="article:modified_time" content="2019-12-31T10:29:13.542Z">
 <meta property="article:author" content="egg">
+<meta property="article:tag" content="PHP���л��뷴���л���ħ������">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/12/">
+<link rel="canonical" href="http://yoursite.com/2019/12/31/ctf-web-php2/">
 
 
 <script id="page-configurations">
@@ -77,11 +80,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>归档 | MR-eggegg</title>
+  <title>CTF��������-WEB-php2 | MR-eggegg</title>
   
 
 
@@ -211,193 +214,151 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 8 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/ctf-web-php2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="egg">
+      <meta itemprop="description" content="kobo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MR-eggegg">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CTF��������-WEB-php2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-31 00:00:41 / 修改时间：19:29:13" itemprop="dateCreated datePublished" datetime="2019-12-31T00:00:41+09:00">2019-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-WEB/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-WEB</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
+        <div class="note info"><p>0x01 ǰҪ</p></div>
+1.PHP���л��뷴���л� </br>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-31T00:00:41+09:00"
-              content="2019-12-31">
-          12-31
-        </time>
-      </div>
+<a id="more"></a>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/31/ctf-web-php2/" itemprop="url">
-            <span itemprop="name">CTF��������-WEB-php2</span>
-          </a>
-      </h2>
+<div class="note info"><p>0x02 ����������˼·</p></div>
+1.����ҳ��Ŀ¼������ע��Ҳûʲô�仯����������
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">?code=</span><br></pre></td></tr></table></figure></div>
 
-    </header>
-  </article>
+<p>2.����������ν����ѧ���������������ĺ�����������<br> 2_1.�������ǵĹ�ע�� _wakeup(),һ���Ȼ����㶫������ϸ��˵�����Կ��Ҹ��Ĳο����������÷����л��ƹ�wakeup���flag��</p>
+ </br>
+3.��Դ������мӹ�
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$c</span> = new xctf();</span><br><span class="line"><span class="variable">$a</span> = serialize(<span class="variable">$c</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$a</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+</br>
+ 3_1.��дphp�ļ����´�,�ó����
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:1:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-30T17:22:55+09:00"
-              content="2019-12-30">
-          12-30
-        </time>
-      </div>
+<p>4.�õ����У�����wakeup�ƹ�ԭ���������д��ʹ����������ʵ���Բ�����Ȼ�����depoly�õ�flag��</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/30/ctf-web-FlatScience/" itemprop="url">
-            <span itemprop="name">CTF攻防世界-WEB-FlatScience</span>
-          </a>
-      </h2>
+<p>====&gt;���¹���</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code=O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<br>
+<div class="note info"><p>0x03 �ο�</p></div>
+1.<a href='https://www.php.net/manual/zh/language.oop5.serialization.php' target="_blank">���л����� - �ڻỰ�д�Ŷ���:https://www.php.net/manual/zh/language.oop5.serialization.php</a><br>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-29T11:22:45+09:00"
-              content="2019-12-29">
-          12-29
-        </time>
-      </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/29/ctf-web-upload/" itemprop="url">
-            <span itemprop="name">CTF攻防世界-WEB-upload</span>
-          </a>
-      </h2>
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-28T11:44:52+09:00"
-              content="2019-12-28">
-          12-28
-        </time>
-      </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/28/ctf-web-bug/" itemprop="url">
-            <span itemprop="name">CTF攻防世界-WEB-bug</span>
-          </a>
-      </h2>
 
-    </header>
-  </article>
+<br>
+<br>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<!-- Link Gitalk ��֧���ļ�  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-27T10:55:34+09:00"
-              content="2019-12-27">
-          12-27
-        </time>
-      </div>
+<pre><code>// gitalk����Ҫ����
+    clientID: &apos;dcf239aa6b46fcf244a3&apos;,
+    clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
+    repo: &apos;MR-eggegg.github.io&apos;,
+    owner: &apos;MR-eggegg&apos;,
+    admin: [&apos;MR-eggegg&apos;],
+    id: &apos;ҳ���Ψһ��ʶ��gitalk����������ʶ�Զ�������issue�ı�ǩ&apos;,
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/27/ctf-lottery/" itemprop="url">
-            <span itemprop="name">CTF攻防世界-WEB-lottery</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T00:30:33+09:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/ctf-ics-05/" itemprop="url">
-            <span itemprop="name">CTF攻防世界-WEB-cis05</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T00:30:33+09:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/pb%E5%9F%BA%E7%A1%80/" itemprop="url">
-            <span itemprop="name">CTF攻防世界-WEB-cookie基础题</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T00:15:36+09:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/24/CTF-python3%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/" itemprop="url">
-            <span itemprop="name">低估的Web威胁-备份文件</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+});
+gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PHP%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%BB%EF%BF%BD%EF%BF%BD%EB%B7%B4%EF%BF%BD%EF%BF%BD%EF%BF%BD%D0%BB%EF%BF%BD%EF%BF%BD%EF%BF%BDh%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/" rel="tag"># PHP���л��뷴���л���ħ������</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/30/ctf-web-FlatScience/" rel="prev" title="CTF攻防世界-WEB-FlatScience">
+      <i class="fa fa-chevron-left"></i> CTF攻防世界-WEB-FlatScience
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -589,6 +550,25 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'dcf239aa6b46fcf244a3',
+      clientSecret: '2b92cc0f958358e2c10b5fb8746381c15f5ee29d',
+      repo: 'MR-eggegg.github.io',
+      owner: 'MR-eggegg',
+      admin: ['MR-eggegg'],
+      id: 'a9d3f9e71859e130d08b0a21f9d529fc',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

